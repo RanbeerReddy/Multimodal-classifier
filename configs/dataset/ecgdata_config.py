@@ -25,3 +25,6 @@ COLS_TO_DROP = [
 
 POS_WEIGHT    = torch.tensor([1.249, 2.899, 3.081, 3.374, 7.067])  # depuis EDA
 DEVICE       = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+
+BATCH_SIZE = 64
