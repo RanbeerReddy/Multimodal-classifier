@@ -1,4 +1,5 @@
-
+from torch import nn
+import torch
 
 class ECGClassifier(nn.Module):
     def __init__(self, encoder, n_meta=6, n_classes=5, dropout=0.3):

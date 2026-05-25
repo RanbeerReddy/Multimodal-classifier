@@ -1,5 +1,6 @@
-
-
+from torch import nn
+import torch.nn.functional as F
+from projection_head import ProjectionHead
 
 class ECGSimCLR(nn.Module):
     def __init__(self, encoder):

@@ -1,3 +1,5 @@
+from torch import nn
+
 class ProjectionHead(nn.Module):
     def __init__(self, in_dim=256, proj_dim=128):
         super().__init__()
