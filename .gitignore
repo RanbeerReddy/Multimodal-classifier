@@ -9,7 +9,7 @@ experiments/
 data/
 
 # But keep the one in notebooks
-!notebooks/data/
+!Multimodal classifier/data/
 
 venv/
 .env
