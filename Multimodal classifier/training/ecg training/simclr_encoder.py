@@ -20,12 +20,14 @@ from ecg_encoder import ECGEncoder
 from ECGSimCLR import ECGSimCLR
 from nt_xent_loss import nt_xent_loss
 from extractload_data import prepare_dataset
+from transform_data import preprocess_ecg_batch
 from split_data import split_data
 from configs.dataset.ecgdata_config import DEVICE
 
 
 def run_simclr_training(epochs=10, batch_size=128, lr=1e-3):
     X, Y_clean = prepare_dataset()
+    X = preprocess_ecg_batch(X)
     x_train, x_valid, x_test, y_train, y_valid, y_test = split_data(Y_clean, X)
 
     ssl_dataset = ECGSSLData(x_train)

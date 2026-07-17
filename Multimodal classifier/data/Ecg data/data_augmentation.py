@@ -31,7 +31,7 @@ class ECGSSLData(torch.utils.data.Dataset):
         else:
             # lead dropout
             lead = torch.randint(0, 12, (1,))
-            x[lead] = 0
+            x[lead.item()] = 0
     
         return x
 

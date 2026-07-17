@@ -5,7 +5,6 @@ def nt_xent_loss(z1, z2, temperature=0.2):
     B = z1.size(0)
 
     z = torch.cat([z1, z2], dim=0)  # (2B, D)
-    z = F.normalize(z, dim=1)
 
     sim = torch.matmul(z, z.T) / temperature  # (2B, 2B)
 
