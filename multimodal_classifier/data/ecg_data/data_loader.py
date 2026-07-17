@@ -1,6 +1,6 @@
 import torch
 from torch.utils.data import Dataset, DataLoader as TorchDataLoader
-from split_data import split_data
+from .split_data import split_data
 from configs.dataset.ecgdata_config import SUPERCLASSES, META_FEATURES, BATCH_SIZE
 
 

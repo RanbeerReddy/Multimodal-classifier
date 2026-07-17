@@ -1,5 +1,5 @@
 import numpy as np
-from transform_data import preprocess_ecg_batch 
+from .transform_data import preprocess_ecg_batch
 
 def get_split(Y_df, X_arr, folds):
     mask = np.isin(Y_df.strat_fold.values, folds)

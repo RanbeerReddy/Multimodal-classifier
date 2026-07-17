@@ -1,29 +1,16 @@
 import os
-import sys
-
-THIS_DIR = os.path.dirname(__file__)
-REPO_ROOT = os.path.abspath(os.path.join(THIS_DIR, '..', '..', '..'))
-DATA_DIR = os.path.join(REPO_ROOT, 'Multimodal classifier', 'data', 'Ecg data')
-MODELS_DIR = os.path.join(REPO_ROOT, 'Multimodal classifier', 'models', 'ecg models')
-LOSSES_DIR = os.path.join(REPO_ROOT, 'Multimodal classifier', 'losses')
-
-for path in (REPO_ROOT, DATA_DIR, MODELS_DIR, LOSSES_DIR):
-    if path not in sys.path:
-        sys.path.insert(0, path)
-
 import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from data_augmentation import ECGSSLData
-from ecg_encoder import ECGEncoder
-from ECGSimCLR import ECGSimCLR
-from nt_xent_loss import nt_xent_loss
-from extractload_data import prepare_dataset
-from transform_data import preprocess_ecg_batch
-from split_data import split_data
+from multimodal_classifier.data.ecg_data.data_augmentation import ECGSSLData
+from multimodal_classifier.models.ecg_models.ecg_encoder import ECGEncoder
+from multimodal_classifier.models.ecg_models.ECGSimCLR import ECGSimCLR
+from multimodal_classifier.losses.nt_xent_loss import nt_xent_loss
+from multimodal_classifier.data.ecg_data.extractload_data import prepare_dataset
+from multimodal_classifier.data.ecg_data.transform_data import preprocess_ecg_batch
+from multimodal_classifier.data.ecg_data.split_data import split_data
 from configs.dataset.ecgdata_config import DEVICE
-
 
 def run_simclr_training(epochs=10, batch_size=128, lr=1e-3):
     X, Y_clean = prepare_dataset()
@@ -64,7 +51,6 @@ def run_simclr_training(epochs=10, batch_size=128, lr=1e-3):
         print(f'Epoch {epoch + 1}/{epochs} avg loss: {avg_loss:.4f}')
 
     return model
-
 
 if __name__ == '__main__':
     run_simclr_training()

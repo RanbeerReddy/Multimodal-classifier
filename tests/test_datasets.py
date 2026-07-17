@@ -1,10 +1,6 @@
-import os
-import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Multimodal classifier', 'data', 'Ecg data')))
-
 import pytest
 import torch
-from data_augmentation import ECGSSLData
+from multimodal_classifier.data.ecg_data.data_augmentation import ECGSSLData
 
 def test_ecg_ssl_data():
     dummy_data = torch.randn(10, 12, 1000)

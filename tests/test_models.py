@@ -1,12 +1,8 @@
-import os
-import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Multimodal classifier', 'models', 'ecg models')))
-
 import torch
 import pytest
-from ecg_encoder import ECGEncoder
-from ECGSimCLR import ECGSimCLR
-from ECGClassifier import ECGClassifier
+from multimodal_classifier.models.ecg_models.ecg_encoder import ECGEncoder
+from multimodal_classifier.models.ecg_models.ECGSimCLR import ECGSimCLR
+from multimodal_classifier.models.ecg_models.ECGClassifier import ECGClassifier
 
 def test_ecg_encoder():
     model = ECGEncoder(n_leads=12, base_channels=64, emb_dim=256)

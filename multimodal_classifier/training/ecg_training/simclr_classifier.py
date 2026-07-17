@@ -1,27 +1,15 @@
 import os
-import sys
-
-THIS_DIR = os.path.dirname(__file__)
-REPO_ROOT = os.path.abspath(os.path.join(THIS_DIR, '..', '..', '..'))
-DATA_DIR = os.path.join(REPO_ROOT, 'Multimodal classifier', 'data', 'Ecg data')
-MODELS_DIR = os.path.join(REPO_ROOT, 'Multimodal classifier', 'models', 'ecg models')
-LOSSES_DIR = os.path.join(REPO_ROOT, 'Multimodal classifier', 'losses')
-
-for path in (REPO_ROOT, DATA_DIR, MODELS_DIR, LOSSES_DIR):
-    if path not in sys.path:
-        sys.path.insert(0, path)
-
 import torch
 import torch.nn as nn
 from tqdm import tqdm
 import numpy as np
 from sklearn.metrics import roc_auc_score
 
-from extractload_data import prepare_dataset
-from transform_data import preprocess_ecg_batch
-from data_loader import create_ecg_dataloaders
-from ecg_encoder import ECGEncoder
-from ECGClassifier import ECGClassifier
+from multimodal_classifier.data.ecg_data.extractload_data import prepare_dataset
+from multimodal_classifier.data.ecg_data.transform_data import preprocess_ecg_batch
+from multimodal_classifier.data.ecg_data.data_loader import create_ecg_dataloaders
+from multimodal_classifier.models.ecg_models.ecg_encoder import ECGEncoder
+from multimodal_classifier.models.ecg_models.ECGClassifier import ECGClassifier
 from configs.dataset.ecgdata_config import DEVICE
 
 def run_classifier_training(epochs=10, batch_size=128, lr=1e-3, encoder_path="ecg_encoder_ssl.pth"):
