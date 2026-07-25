@@ -1,4 +1,5 @@
-from torch import nn
+import torch.nn as nn
+
 
 class ProjectionHead(nn.Module):
     def __init__(self, in_dim=256, proj_dim=128):
@@ -6,7 +7,7 @@ class ProjectionHead(nn.Module):
         self.net = nn.Sequential(
             nn.Linear(in_dim, in_dim),
             nn.ReLU(),
-            nn.Linear(in_dim, proj_dim)
+            nn.Linear(in_dim, proj_dim),
         )
 
     def forward(self, x):
