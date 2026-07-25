@@ -1,6 +1,11 @@
 import torch
+from torch.utils.data import Dataset
+
 
 class ECGSSLWithLabels(Dataset):
+    """SupCon augmentation dataset with multi-hot labels for supervised
+    contrastive pretraining."""
+
     def __init__(self, X, Y):
         # X: (N, T, 12) → convert to (N, 12, T)
         self.X = torch.tensor(X.transpose(0, 2, 1), dtype=torch.float32)
@@ -27,7 +32,7 @@ class ECGSSLWithLabels(Dataset):
         if torch.rand(1) < 0.5:
             length = torch.randint(150, 400, (1,))
             start = torch.randint(0, x.shape[1] - length, (1,))
-            x[:, start:start+length] = 0
+            x[:, start:start + length] = 0
         else:
             lead = torch.randint(0, 12, (1,))
             x[lead] = 0
@@ -37,8 +42,6 @@ class ECGSSLWithLabels(Dataset):
     def __getitem__(self, idx):
         x = self.X[idx]
         y = self.Y[idx]
-
         x1 = self.augment(x)
         x2 = self.augment(x)
-
         return x1, x2, y
