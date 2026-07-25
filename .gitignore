@@ -3,6 +3,7 @@ __pycache__/
 .ipynb_checkpoints/
 
 checkpoints/
+checkpoints_*/
 experiments/
 
 # Ignore all data folders
@@ -13,3 +14,12 @@ data/
 
 venv/
 .env
+
+# Preprocessed cache files
+*.npy
+
+# Model checkpoint files (saved during training)
+*.pth
+
+# Scratch files
+scratch_extract.py

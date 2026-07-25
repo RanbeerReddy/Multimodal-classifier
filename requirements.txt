@@ -1,1 +1,14 @@
+# Core ML dependencies
+torch
+numpy
+pandas
+scipy
+wfdb
+scikit-learn
+tqdm
+matplotlib
+seaborn
+
+# Testing
+pytest
 packaging==26.0
