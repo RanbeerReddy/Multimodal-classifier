@@ -11,6 +11,7 @@ data/
 
 # But keep the one in notebooks
 !Multimodal classifier/data/
+!multimodal_classifier/data/
 
 venv/
 .env

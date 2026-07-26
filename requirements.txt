@@ -1,5 +1,7 @@
 # Core ML dependencies
 torch
+torchvision
+pillow
 numpy
 pandas
 scipy
